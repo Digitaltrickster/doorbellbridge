@@ -21,8 +21,10 @@ while True:
 #        continue
 
     output = process.readline()
+    count = 0
     if dbstring in output:
         r = requests.put(API_ENDPOINT+"/switches/on",headers=headers)
-        sleep(1)
-        while dbstring in output:
+        #sleep(1)
+        while dbstring in output and count <= 27:
            output = process.readline()
+           count += 1
